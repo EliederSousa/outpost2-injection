@@ -2,7 +2,10 @@ Outpost 2 Injector
 
 This project was created using a patched version of game with OPU (1.4.1). It wasn't tested against other versions.
 
-# Build
+## If you just want to test...
+Take the build/odasl.dll file and put into OPU folder. Read below what it does to your game and have fun.
+
+## Build
 
 First, the game binaries is x86, so you need to compile using x86 toolchains. You can use MinGW, which can be found at:
 https://winlibs.com/
@@ -15,7 +18,7 @@ After copying to a convinient place, put make binaries in your Path environment 
 
 The compilation will generate a build folder, which will contains the odasl.dll file. Put it in your OPU folder and thats it.
 
-# Default funcionalities
+## Default funcionalities
 
 * Morale always 100
 * Children/Workers/Scientists = 100/100/150
