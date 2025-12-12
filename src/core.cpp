@@ -165,8 +165,8 @@ namespace Core {
         namespace Functions {
             // SetEarthquake
             SetEarthquake_t SetEarthquake_Raw = (SetEarthquake_t)(baseAddress + 0x78320);
-            const int EARTHQUAKE_OFFSET_X = 31;
-            const int EARTHQUAKE_OFFSET_Y = -1;
+            const int EARTHQUAKE_OFFSET_X = 32;
+            const int EARTHQUAKE_OFFSET_Y = 1;
             
             void SetEarthquake(int x, int y, int magnitude) {
                 SetEarthquake_Raw(x + EARTHQUAKE_OFFSET_X, y + EARTHQUAKE_OFFSET_Y, magnitude);
@@ -174,8 +174,8 @@ namespace Core {
             
             // SetTornado
             SetTornado_t SetTornado_Raw = (SetTornado_t)(baseAddress + 0x78350);
-            const int TORNADO_OFFSET_X = 31;
-            const int TORNADO_OFFSET_Y = -1;
+            const int TORNADO_OFFSET_X = 32;
+            const int TORNADO_OFFSET_Y = 1;
             
             void SetTornado(int startX, int startY, int duration, int targetX, int targetY, bool instant) {
                 SetTornado_Raw(
@@ -190,8 +190,8 @@ namespace Core {
             
             // SetMeteor
             SetMeteor_t SetMeteor_Raw = (SetMeteor_t)(baseAddress + 0x783B0);
-            const int METEOR_OFFSET_X = 31;
-            const int METEOR_OFFSET_Y = -1;
+            const int METEOR_OFFSET_X = 32;
+            const int METEOR_OFFSET_Y = 1;
             
             void SetMeteor(int x, int y, int size) {
                 SetMeteor_Raw(x + METEOR_OFFSET_X, y + METEOR_OFFSET_Y, size);
@@ -199,8 +199,8 @@ namespace Core {
             
             // SetLightning
             SetLightning_t SetLightning_Raw = (SetLightning_t)(baseAddress + 0x783E0);
-            const int LIGHTNING_OFFSET_X = 31;
-            const int LIGHTNING_OFFSET_Y = -1;
+            const int LIGHTNING_OFFSET_X = 32;
+            const int LIGHTNING_OFFSET_Y = 1;
             
             void SetLightning(int startX, int startY, int duration, int targetX, int targetY) {
                 // Se targetX for -1, a função não define alvo específico
@@ -213,6 +213,35 @@ namespace Core {
                     duration,
                     adjTargetX,
                     adjTargetY
+                );
+            }
+
+            // SetEMPMissile
+            SetEMPMissile_t SetEMPMissile_Raw = (SetEMPMissile_t)(baseAddress + 0x78420);
+            const int EMP_OFFSET_X = 32;
+            const int EMP_OFFSET_Y = 1;
+            
+            void SetEMPMissile(int startX, int startY, int param3, int targetX, int targetY) {
+                SetEMPMissile_Raw(
+                    startX + EMP_OFFSET_X,
+                    startY + EMP_OFFSET_Y,
+                    param3,
+                    targetX + EMP_OFFSET_X,
+                    targetY + EMP_OFFSET_Y
+                );
+            }
+
+            // CreateWallOrTube
+            CreateWallOrTube_t CreateWallOrTube_Raw = (CreateWallOrTube_t)(baseAddress + 0x78AA0);
+            const int WALL_OFFSET_X = 32;
+            const int WALL_OFFSET_Y = 1;
+            
+            int CreateWallOrTube(int x, int y, int param3, MapStructureType type) {
+                return CreateWallOrTube_Raw(
+                    x + WALL_OFFSET_X, 
+                    y + WALL_OFFSET_Y, 
+                    param3, 
+                    type
                 );
             }
         }

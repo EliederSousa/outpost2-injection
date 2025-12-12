@@ -150,6 +150,22 @@ namespace Core {
             typedef void(__fastcall* SetLightning_t)(int startX, int startY, int duration, int targetX, int targetY);
             extern SetLightning_t SetLightning_Raw;
             void SetLightning(int startX, int startY, int duration, int targetX, int targetY);
+
+            typedef void(__fastcall* SetEMPMissile_t)(int startX, int startY, int param3, int targetX, int targetY);
+            extern SetEMPMissile_t SetEMPMissile_Raw;
+            void SetEMPMissile(int startX, int startY, int param3, int targetX, int targetY);
+
+            // Enum para tipos de wall/tube
+            enum MapStructureType {
+                Tube = 0x11,
+                Wall1 = 0x12,
+                Wall2 = 0x13,
+                Wall3 = 0x14
+            };
+            
+            typedef int(__fastcall* CreateWallOrTube_t)(int x, int y, int param3, MapStructureType type);
+            extern CreateWallOrTube_t CreateWallOrTube_Raw;
+            int CreateWallOrTube(int x, int y, int param3, MapStructureType type);
         }
     }
 
